@@ -1,11 +1,13 @@
 import express from "express";
 import { fakeAuth } from "./middlewares/fakeAuth";
 import { transactionRouter } from "./routes/transaction.routes";
+import { categoryRouter } from "./routes/category.routes";
 
 const app = express();
 
 app.use(express.json());
 app.use("/api/transactions", fakeAuth, transactionRouter);
+app.use("/api/categories", fakeAuth, categoryRouter)
 
 app.get('/', (req, res) => {
     res.send("<h1>This is Finance Tracker Home Page</h1>");
